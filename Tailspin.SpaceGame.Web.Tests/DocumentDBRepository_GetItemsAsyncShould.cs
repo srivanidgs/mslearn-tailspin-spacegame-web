@@ -25,9 +25,9 @@ namespace Tests
         }
 
         [TestCase("Milky Way")]
-        [TestCase("Andromeda")]
-        [TestCase("Pinwheel")]
-        [TestCase("NGC 1300")]
+        [TestCase("Andro meda")]
+        [TestCase("Pinwheel2")]
+        [TestCase("a1s2d32sa3")]
         [TestCase("Messier 82")]
         public void FetchOnlyRequestedGameRegion(string gameRegion)
         {
@@ -48,7 +48,7 @@ namespace Tests
             IEnumerable<Score> scores = scoresTask.Result;
 
             // Verify that each score's game region matches the provided game region.
-            Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion));
+            Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion != gameRegion));
         }
     }
 }
